@@ -1,0 +1,57 @@
+<?php
+session_start();
+if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
+    header('Location: login.php');
+    exit;
+}
+?>
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Tableau de bord administrateur</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .card:hover { transform: scale(1.05); transition: 0.3s ease-in-out; }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Admin - SmarttechApp</a>
+            <ul class="navbar-nav ms-auto">
+                <div class="d-flex">
+                    <a href="logout.php" class="btn btn-danger ms-3">Déconnexion</a>
+                </div>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <h1 class="text-center">Bienvenue, Administrateur</h1>
+        <div class="row mt-4">
+            <div class="col-md-4">
+                <a href="employees.php" class="card bg-info text-white text-center p-4">
+                    <h3>Gestion des Employés</h3>
+                </a>
+            </div>
+            <div class="col-md-4">
+                <a href="clients.php" class="card bg-success text-white text-center p-4">
+                    <h3>Gestion des Clients</h3>
+                </a>
+            </div>
+            <div class="col-md-4">
+                <a href="documents.php" class="card bg-warning text-white text-center p-4">
+                    <h3>Gestion des Documents</h3>
+                </a>
+            </div>
+            <div class="col-md-4 mt-4">
+                <a href="users.php" class="card bg-primary text-white text-center p-4">
+                    <h3>Gestion des Utilisateurs</h3>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
